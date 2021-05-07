@@ -1,0 +1,33 @@
+     <nz-table #fixedTable [nzData]="listOfData"
+      >
+       <thead>
+         <tr>
+           <th nzLeft> Name</th>
+           <th nzLeft>Description</th>
+           <th>Objects Validated</th>
+           <th>Validation Time</th>
+           <th>Schedule Cadence</th>
+           <th>Created By</th>
+           <!-- <th>Created At</th> -->
+           <!-- <th>Actions</th> -->
+           <th nzRight>Action</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let data of fixedTable.data">
+           <td nzLeft>{{ data.name }}</td>
+           <td nzLeft>{{ data.description }}</td>
+           <td>{{ data.objectsValidated }}</td>
+           <td>{{ data.validationTime }}</td>
+           <td>{{ data.scheduleCadence }}</td>
+           <td>{{ data.createdBy }}</td>
+           <!-- <td>{{ data.address }}</td> -->
+           <td nzRight>
+             <a><img class="runNow" nz-tooltip nzTooltipTitle="Run now" src="../../../assets/Images/ActionImg/play-active.png"></a>
+             <a><img class="approveNow" nz-tooltip nzTooltipTitle="Approve status" src="../../../assets/Images/ActionImg/immigration.png"></a>
+             <a><img class="validate" nz-tooltip nzTooltipTitle="View Validation" src="../../../assets/Images/ActionImg/monitor.png"></a>
+             <a><img class="schedule" src="../../../assets/Images/ActionImg/booking.png" nz-tooltip nzTooltipTitle="Schedule"></a>
+           </td>
+         </tr>
+       </tbody>
+     </nz-table>

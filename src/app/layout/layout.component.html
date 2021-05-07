@@ -1,0 +1,47 @@
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar" nzCollapsible nzWidth="256px" nzBreakpoint="md" [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null" style="background: white;">
+    <div class="sidebar-logo" style="background: white;">
+      <img style="height: 41px; width: 85px;" src="../../assets/Images/dcubeImg/dcube.png" alt="logo" srcset="">
+      <!-- <h1 style="color: black; font-size: large;">Data Validator</h1> -->
+    </div>
+    <ul nz-menu nzMode="inline">
+      <li nz-menu-item>
+        <span> Connections </span>
+      </li>
+      <li nz-menu-item>
+        <span routerLink="workflow"> Validators </span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
+          <img style="width: 58px;" src="../../assets/Images/dcubeImg/DDS-Terra2.png" alt="" srcset="">
+        </span>
+        <span style="font-size: 20px;">DDS Terra</span>
+        <span><img src="../../assets/Images/dcubeImg/chevron.png" style="height: 14px; width: 20px; margin: 10px;" alt="" srcset=""></span>
+        <span style="font-size: 20px;">DDS Extractors</span>
+            <!-- <ul nz-menu nzMode="horizontal" class="header-menu">
+          <li nz-menu-item nzSelected>
+          <img style="width: 58px;" src="../../assets/Images/dcubeImg/DDS-Terra2.png" alt="" srcset="">
+          </li>
+          <li nz-menu-item>DDS Terra</li>
+          <li nz-menu-item>nav 3</li>
+        </ul> -->
+        <!-- <span> -->
+        <!-- </span> -->
+        <!-- <a href="https://dcubeanalytics.com/">
+          <img style="width: 85px; position: relative; bottom: 5px;" src="../assets/Images/dcube.png" alt="" srcset="">
+        </a> -->
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <!-- <app-workflow></app-workflow> -->
+        <router-outlet></router-outlet>
+      </div>
+    </nz-content>
+  </nz-layout>
