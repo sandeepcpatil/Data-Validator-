@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, NgForm } from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-new-comparator',
@@ -8,53 +8,53 @@ import { FormGroup, NgForm } from '@angular/forms';
 })
 export class AddNewComparatorComponent implements OnInit {
   current = 0;
-  // @ViewChild('f') detailsForm: NgForm;
   index = 'First-content';
-  // detailsForm: FormGroup;
-  constructor() {}
+  // discForm: FormGroup;
+  validateDetailsForm: FormGroup;
+  constructor( private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    // this.detailsForm = new FormGroup({
-    //   'compname': new FormGroup(null),
-    //   'compdesc': new FormGroup(null)
-    // })
+    this.validateDetailsForm = this.fb.group({
+      compName: [null, [Validators.required]],
+      compDesc: [null, [Validators.required]]
+    })
   }
 
   pre(): void {
     this.current -= 1;
-    this.changeContent();
+    // this.changeContent();
   }
 
   next(): void {
     this.current += 1;
-    this.changeContent();
+    // this.changeContent();
   }
 
   done(): void {
     console.log('done');
   }
 
-  changeContent(): void {
-    switch (this.current) {
-      case 0: {
-        this.index = 'First-content';
-        break;
-      }
-      case 1: {
-        this.index = 'Second-content';
-        break;
-      }
-      case 2: {
-        this.index = 'third-content';
-        break;
-      }
-      default: {
-        this.index = 'error';
-      }
-    }
-  }
-
-  // onDetailsSubmit(){
-  //   console.log(this.detailsForm)
+  // changeContent(): void {
+  //   switch (this.current) {
+  //     case 0: {
+  //       this.index = 'First-content';
+  //       break;
+  //     }
+  //     case 1: {
+  //       this.index = 'Second-content';
+  //       break;
+  //     }
+  //     case 2: {
+  //       this.index = 'third-content';
+  //       break;
+  //     }
+  //     default: {
+  //       this.index = 'error';
+  //     }
+  //   }
   // }
+
+  submitForm(){
+    console.log(this.validateDetailsForm)
+  }
 }

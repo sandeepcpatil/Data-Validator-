@@ -27,7 +27,7 @@ export class ValidatorsDetailsComponent implements OnInit {
         validationTime: this.today.getFullYear() + '-' + this.today.getMonth() + '-' + this.today.getDay() + " " + this.today.getHours() + ":" + this.today.getMinutes(),
         scheduleCadence: 'once',
         // createdAt: this.today.getHours()+ ":" + this.today.getMinutes() + ":" + this.today.getSeconds(),
-        createdBy: 'Sandeep',
+        createdBy: 'Dcube',
         objectsValidated: 10,
       });
     }
