@@ -84,6 +84,8 @@ import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
 import { AddNewComparatorComponent } from './pages/add-new-comparator/add-new-comparator.component';
 import { ValidatorsDetailsComponent } from './Pages/validators-details/validators-details.component';
+import { FirstPageComponent } from './Pages/first-page/first-page.component';
+import { TreeViewComponent } from './Components/tree-view/tree-view.component';
 
 registerLocaleData(en);
 
@@ -94,7 +96,9 @@ registerLocaleData(en);
     WorkflowComponent,
     LandingPageComponent,
     AddNewComparatorComponent,
-    ValidatorsDetailsComponent
+    ValidatorsDetailsComponent,
+    FirstPageComponent,
+    TreeViewComponent
   ],
   imports: [
     BrowserModule,

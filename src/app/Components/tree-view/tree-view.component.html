@@ -1,0 +1,52 @@
+        <nz-input-group [nzSuffix]="suffixIcon" class="mb-1">
+          <input type="text" nz-input placeholder="Search file Name" [(ngModel)]="fileSearchValue">
+        </nz-input-group>
+        <ng-template #suffixIcon>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+
+        <!-- <nz-tree-view [nzTreeControl]="treeControl" [nzDataSource]="dataSource" [nzDirectoryTree]="true">
+          <nz-tree-node *nzTreeNodeDef="let node" nzTreeNodePadding>
+            <nz-tree-node-toggle nzTreeNodeNoopToggle></nz-tree-node-toggle>
+            <nz-tree-node-option [nzDisabled]="node.disabled" [nzSelected]="selectListSelection.isSelected(node)"
+              (nzClick)="selectListSelection.toggle(node)">
+              <i nz-icon nzType="file" nzTheme="outline"></i>
+              {{ node.name }}
+            </nz-tree-node-option>
+          </nz-tree-node>
+
+          <nz-tree-node *nzTreeNodeDef="let node; when: hasChild" nzTreeNodePadding>
+            <nz-tree-node-toggle>
+              <i nz-icon nzType="caret-down" nzTreeNodeToggleRotateIcon></i>
+            </nz-tree-node-toggle>
+            <nz-tree-node-option [nzDisabled]="node.disabled" [nzSelected]="selectListSelection.isSelected(node)"
+              (nzClick)="selectListSelection.toggle(node)">
+              <i nz-icon [nzType]="treeControl.isExpanded(node) ? 'folder-open' : 'folder'" nzTheme="outline"></i>
+              {{ node.name }}
+            </nz-tree-node-option>
+          </nz-tree-node>
+        </nz-tree-view> -->
+
+
+        <nz-tree [nzSearchValue]="fileSearchValue" nzBlockNode [nzData]="nodes" (nzClick)="activeNode($event)" (nzDblClick)="openFolder($event)"
+          [nzTreeTemplate]="nzTreeTemplate"></nz-tree>
+        <ng-template #nzTreeTemplate let-node let-origin="origin">
+          <span class="custom-node">
+            <span *ngIf="!node.isLeaf" (contextmenu)="contextMenu($event, menu)">
+              <i nz-icon [nzType]="node.isExpanded ? 'folder-open' : 'folder'" (click)="openFolder(node)"></i>
+              <span class="folder-name">{{ node.title }}</span>
+              <!-- <span class="folder-desc">created by {{ origin.author | lowercase }}</span> -->
+            </span>
+            <span *ngIf="node.isLeaf" (contextmenu)="contextMenu($event, menu)">
+              <i nz-icon nzType="file"></i>
+              <span class="file-name">{{ node.title }}</span>
+              <!-- <span class="file-desc">modified by {{ origin.author | lowercase }}</span> -->
+            </span>
+          </span>
+        </ng-template>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item (click)="selectDropdown()">Action 1</li>
+            <li nz-menu-item (click)="selectDropdown()">Action 2</li>
+          </ul>
+        </nz-dropdown-menu>
