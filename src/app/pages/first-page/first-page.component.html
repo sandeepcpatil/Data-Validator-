@@ -1,161 +1,189 @@
-<div class="connection-details">
-  <div class="source-details">
-    <form nz-form>
+<!-- <div class="connection-details"> -->
+<!-- <div class="source-details"> -->
 
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> Connection Type </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Connection ' + 'type'">
-            <nz-option *ngFor="let item of sortBy('name')" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> File Type </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'File' + 'type'">
-            <nz-option *ngFor="let item of connectionFileList" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]='8' nzRequired>File Location</nz-form-label>
-        <!-- <input type="text" nz-input >
-        <img src="../../../assets/Images/folder.png" style="width: 30px; cursor: pointer;" alt="folder-icon" (click)="showModal()" > -->
-
-        <!-- <app-tree-view></app-tree-view> -->
-        <span style="display: flex;">
-        <input nz-input placeholder="File Path">
-
-        <img src="../../../assets/Images/folder.png" style="width: 30px; padding-left: 5px;" (click)="showModal()">
-        </span>
-        <!-- <nz-input-group [nzSuffix]="suffixIcon" class="mb-1">
-            <input type="text" nz-input placeholder="Search file Name" [(ngModel)]="fileSearchValue">
-        </nz-input-group>
-        <ng-template #suffixIcon>
-            <i nz-icon nzType="search"></i>
-        </ng-template> -->
-
-        <!-- <nz-form-control [nzSpan]="12">
-            <input nz-input placeholder="File path">
-            <img src="../../../assets/Images/folder.png" style="width: 30px;" alt="">
-        </nz-form-control> -->
-
-        <!-- <button nz-button [nzType]="'default'" (click)="showModal()"><span style="width: 325px;"><img style="height: 25px; float: right;" src="../../../assets/Images/upload-file.png" alt="" srcset=""></span></button> -->
-
-        <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()"
-          (nzOnOk)="handleOk()">
-          <ng-container *nzModalContent>
-            <!-- <p>Folder one</p>
-            <p>Directory two</p>
-            <p>Folder2 three</p> -->
-            <app-tree-view></app-tree-view>
-          </ng-container>
-        </nz-modal>
-      </nz-form-item>
-
-
-
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> Files Separated By </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'"
-            [nzPlaceHolder]="'Select ' + 'Files' + 'Separated By'">
-            <nz-option *ngFor="let item of filesSeparatedBy" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> First Row is Header </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'"
-            [nzPlaceHolder]="'Select ' + 'Files ' + 'Separated By'">
-            <nz-option *ngFor="let item of headerTrue" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-
-    </form>
-  </div>
-  <div class="target-details">
-
-    <form nz-form>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> Target Type </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Connection ' + 'type'">
-            <nz-option *ngFor="let item of sortBy('name')" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> File Type </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'File ' + 'type'">
-            <nz-option *ngFor="let item of connectionFileList" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]='8' nzRequired>File Location</nz-form-label>
-
-        <span style="display: flex;">
-        <input nz-input placeholder="File Path">
-        <img src="../../../assets/Images/folder.png" style="width: 30px; padding-left: 5px;" (click)="showModal()">
-        </span>
-        <!-- <button nz-button [nzType]="'default'" (click)="showModal()"><span style="width: 325px;"><img style="height: 25px; float: right;" src="../../../assets/Images/upload-file.png"></span></button> -->
-        <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()"
-          (nzOnOk)="handleOk()">
-          <ng-container *nzModalContent>
-            <!-- <p>Folder one</p>
-            <p>Directory two</p>
-            <p>Folder2 three</p> -->
-            <app-tree-view>
-
-            </app-tree-view>
-          </ng-container>
-        </nz-modal>
-      </nz-form-item>
-
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> Files Separated By </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'"
-            [nzPlaceHolder]="'Select ' + 'Files ' + 'Separated By'">
-            <nz-option *ngFor="let item of filesSeparatedBy" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-      <nz-form-item>
-        <nz-form-label [nzSpan]="8" nzRequired> First Row is Header </nz-form-label>
-        <nz-form-control [nzSpan]="12">
-          <nz-select name="select-validate" [ngModel]="'Option 2'"
-            [nzPlaceHolder]="'Select ' + 'Files ' + 'Separated By'">
-            <nz-option *ngFor="let item of headerTrue" [nzValue]="item.value" [nzLabel]="item.name">
-            </nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-
-
-    </form>
+<!-- <div class="one-pair" #onePair> -->
+  <div style="display: flex; justify-content: center; padding-top: 10px;">
+  <h3 style="padding-right: 10px
+  ;">Select the Validation Type:</h3>
+    <nz-radio-group [(ngModel)]="radioValue">
+      <label nz-radio nzValue="A">Single File Validation</label>
+      <label nz-radio nzValue="B">Source Target Comparison</label>
+    </nz-radio-group>
   </div>
 
+<div class="source-system" >
+  <h3>Object 1</h3>
+<form nz-form class="source-details">
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Connection Type </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Connection ' + 'type'">
+        <nz-option *ngFor="let item of connectionsTypeList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Connection Name </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Connection ' + 'Name'">
+        <nz-option *ngFor="let item of connectionNameList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Bucket Name </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Bucket ' + 'Name'">
+        <nz-option *ngFor="let item of connectionBucketList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> File Type </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'File' + 'type'">
+        <nz-option *ngFor="let item of connectionFileList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]='8' nzRequired>File Location</nz-form-label>
+    <span style="display: flex;">
+      <input nz-input placeholder="File Path">
+
+      <img src="../../../assets/Images/folder.png" style="width: 30px; padding-left: 5px;" (click)="showModal()">
+    </span>
+
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <ng-container *nzModalContent>
+        <app-tree-view></app-tree-view>
+      </ng-container>
+    </nz-modal>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Files Separated By </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Files' + 'Separated By'">
+        <nz-option *ngFor="let item of filesSeparatedBy" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> First Row is Header </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Files ' + 'Separated By'">
+        <nz-option *ngFor="let item of headerTrue" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+</div>
+
+
+
+
+
+
+<div class="target-system"  *ngIf="radioValue === 'B'">
+    <h3>Object 2</h3>
+  <form nz-form class="target-details" >
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Connection Type </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Connection ' + 'Type'">
+        <nz-option *ngFor="let item of connectionsTypeList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Connection Name </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Connection ' + 'Name'">
+        <nz-option *ngFor="let item of connectionNameList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Bucket Name </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Bucket ' + 'Name'">
+        <nz-option *ngFor="let item of connectionBucketList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> File Type </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'File' + 'type'">
+        <nz-option *ngFor="let item of connectionFileList" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]='8' nzRequired>File Location</nz-form-label>
+    <span style="display: flex;">
+      <input nz-input placeholder="File Path">
+
+      <img src="../../../assets/Images/folder.png" style="width: 30px; padding-left: 5px;" (click)="showModal()">
+    </span>
+
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+      <ng-container *nzModalContent>
+        <app-tree-view></app-tree-view>
+      </ng-container>
+    </nz-modal>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> Files Separated By </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Files' + 'Separated By'">
+        <nz-option *ngFor="let item of filesSeparatedBy" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="8" nzRequired> First Row is Header </nz-form-label>
+    <nz-form-control [nzSpan]="12">
+      <nz-select name="select-validate" [ngModel]="'Option 2'" [nzPlaceHolder]="'Select ' + 'Files ' + 'Separated By'">
+        <nz-option *ngFor="let item of headerTrue" [nzValue]="item.value" [nzLabel]="item.name">
+        </nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+
+  </form>
+</div>
+
+
+
+<!-- </div> -->
+
+
+<div class="add-another"  style="display: grid; justify-content: center; padding-top: 10px;">
+  <button nz-button nzType="dashed" >Add another Object</button>
 </div>

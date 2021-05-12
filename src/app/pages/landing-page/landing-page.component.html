@@ -1,12 +1,24 @@
-<button routerLink="/workflow/add" class="add-btn" >
-        <span class="plus-img">
-        <img style="width: 30px; " src="../../../assets/Images/plus.png" alt="">
-        </span>
-        <span class="btn-title">
-           New Validator
-        </span>
+<button routerLink="/workflow/add" class="add-btn">
+    New Validator
 </button>
-<br><br><br>
+<button class="heath-btn">
+  Health DashBoard
+</button>
+
+<div class="search-btn">
+<nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
+  <input type="text" nz-input placeholder="search" />
+</nz-input-group>
+<ng-template #suffixIconButton>
+  <button nz-button nzType="primary" nzSearch><i nz-icon nzType="search"></i></button>
+</ng-template>
+
+</div>
+
+<br>
+<br>
+<br>
+
 <hr>
 
 <app-validators-details></app-validators-details>

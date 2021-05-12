@@ -10,7 +10,7 @@
   <form nz-form *ngIf="current == 0" style="padding-top: 35px;" [formGroup]="validateDetailsForm" (ngSubmit)="submitForm()" >
     <nz-form-item>
       <nz-form-label [nzSpan]='7' nzRequired >
-        Comparator Name
+        Validator Name
       </nz-form-label>
       <nz-form-control [nzSpan]="12" nzErrorTip="Please give name to validator">
         <input nz-input placeholder="Comparator Name" formControlName="compName">
@@ -18,7 +18,7 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-label [nzSpan]="7" nzRequired>
-        Comparator Description
+        Validator Description
       </nz-form-label>
       <nz-form-control [nzSpan]="12" nzErrorTip="Please write something about the validator">
         <textarea nz-input rows="2" placeholder="Comparator Description" formControlName="compDesc"></textarea>

@@ -2,26 +2,25 @@
       >
        <thead>
          <tr>
+          <th nzWidth="60px"></th>
            <th nzLeft> Name</th>
-           <th nzLeft>Description</th>
-           <th>Objects Validated</th>
-           <th>Validation Time</th>
-           <th>Schedule Cadence</th>
-           <th>Created By</th>
-           <!-- <th>Created At</th> -->
-           <!-- <th>Actions</th> -->
+           <th nzLeft>Validation Details</th>
+           <th>Validation Status</th>
+           <th>Approval Status</th>
+           <th>Last Validated</th>
+           <!-- <th>Created By</th> -->
            <th nzRight>Action</th>
          </tr>
        </thead>
-       <tbody>
-         <tr *ngFor="let data of fixedTable.data">
+       <tbody *ngFor="let data of fixedTable.data">
+         <tr >
+            <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
            <td nzLeft>{{ data.name }}</td>
-           <td nzLeft>{{ data.description }}</td>
-           <td>{{ data.objectsValidated }}</td>
-           <td>{{ data.validationTime }}</td>
-           <td>{{ data.scheduleCadence }}</td>
-           <td>{{ data.createdBy }}</td>
-           <!-- <td>{{ data.address }}</td> -->
+           <td nzLeft>{{ data.validationDetails }}</td>
+           <td>{{ data.validationStatus }}</td>
+           <td>{{ data.approvalStatus }}</td>
+           <td>{{ data.lastValidatedTime }}</td>
+           <!-- <td>{{ data.createdBy }}</td> -->
            <td nzRight>
              <a><img class="runNow" nz-tooltip nzTooltipTitle="Run now" src="../../../assets/Images/ActionImg/play-active.png"></a>
              <a><img class="approveNow" nz-tooltip nzTooltipTitle="Approve status" src="../../../assets/Images/ActionImg/immigration.png"></a>
@@ -29,5 +28,37 @@
              <a><img class="schedule" src="../../../assets/Images/ActionImg/booking.png" nz-tooltip nzTooltipTitle="Schedule"></a>
            </td>
          </tr>
+          <tr [nzExpand]="expandSet.has(data.id)">
+            <!-- <span>{{ data.name }} {{data.lastValidatedTime}}</span> -->
+            <!-- <tr> -->
+            <td>File A</td>
+            <td>File B</td>
+            <td>File C</td>
+            <!-- </tr> -->
+          </tr>
        </tbody>
      </nz-table>
+
+     <!-- <nz-table #nzTable [nzData]="listOfData" nzTableLayout="fixed">
+      <thead>
+        <tr>
+          <th nzWidth="60px"></th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of nzTable.data">
+          <tr>
+            <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.address }}</td>
+          </tr>
+          <tr [nzExpand]="expandSet.has(data.id)">
+            <span>{{ data.description }}</span>
+          </tr>
+        </ng-container>
+      </tbody>
+    </nz-table> -->
