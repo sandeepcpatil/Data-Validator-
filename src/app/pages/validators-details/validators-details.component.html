@@ -8,33 +8,29 @@
            <th>Validation Status</th>
            <th>Approval Status</th>
            <th>Last Validated</th>
-           <!-- <th>Created By</th> -->
            <th nzRight>Action</th>
          </tr>
        </thead>
        <tbody *ngFor="let data of fixedTable.data">
          <tr >
-            <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
+         <td [nzExpand]="expandSet.has(data.id)" (nzExpandChange)="onExpandChange(data.id, $event)"></td>
            <td nzLeft>{{ data.name }}</td>
            <td nzLeft>{{ data.validationDetails }}</td>
            <td>{{ data.validationStatus }}</td>
            <td>{{ data.approvalStatus }}</td>
            <td>{{ data.lastValidatedTime }}</td>
-           <!-- <td>{{ data.createdBy }}</td> -->
            <td nzRight>
              <a><img class="runNow" nz-tooltip nzTooltipTitle="Run now" src="../../../assets/Images/ActionImg/play-active.png"></a>
              <a><img class="approveNow" nz-tooltip nzTooltipTitle="Approve status" src="../../../assets/Images/ActionImg/immigration.png"></a>
-             <a><img class="validate" nz-tooltip nzTooltipTitle="View Validation" src="../../../assets/Images/ActionImg/monitor.png"></a>
              <a><img class="schedule" src="../../../assets/Images/ActionImg/booking.png" nz-tooltip nzTooltipTitle="Schedule"></a>
+             <a><img class="delete" nz-tooltip nzTooltipTitle="delete" src="../../../assets/Images/ActionImg/delete-active.png"></a>
            </td>
          </tr>
           <tr [nzExpand]="expandSet.has(data.id)">
             <!-- <span>{{ data.name }} {{data.lastValidatedTime}}</span> -->
-            <!-- <tr> -->
             <td>File A</td>
             <td>File B</td>
             <td>File C</td>
-            <!-- </tr> -->
           </tr>
        </tbody>
      </nz-table>

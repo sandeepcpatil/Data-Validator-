@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {form} from '../../Components/model/form.model'
 
 @Component({
   selector: 'app-first-page',
@@ -10,13 +9,12 @@ export class FirstPageComponent implements OnInit {
   isVisible= false;
   public fileSearchValue: any = '';
   public radioValue=" "
+  checked= true;
   formArray = [];
-  forms = new form();
   constructor() { }
 
 
   ngOnInit(): void {
-    this.formArray.push(this.forms)
   }
 
   public connectionsTypeList = [
@@ -66,9 +64,5 @@ export class FirstPageComponent implements OnInit {
     this.isVisible = false;
   }
 
-  addForm(){
-    this.forms= new form;
-    this.formArray.push(this.forms)
-  }
 
 }
